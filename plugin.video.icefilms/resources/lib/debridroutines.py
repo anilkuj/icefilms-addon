@@ -48,6 +48,9 @@ class RealDebrid:
         elif re.search('This hoster is not included in our free offer', source):
             download_details['message'] = 'This hoster is not included in our free offer'
             return download_details
+        elif re.search('No server is available for this hoster.', source):
+            download_details['message'] = 'No server is available for this hoster.'
+            return download_details    
         else:
             link = re.search('ok"><a href="(.+?)"', source).group(1)
             print 'DebridRoutines - Resolved Link: %s' % link
